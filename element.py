@@ -16,26 +16,26 @@ class Element:
 		self.text=text
 
 	#adds a child to the current tag
-	def addChild(self,ele):
+	def add_child(self,ele):
 		self.children=self.children+[ele]
 
 	#add text to the current tag - create a text element , and add it to the children list of the current object
-	def setText(self, text):
+	def set_text(self, text):
 	 	e = Element(text=text)
 	 	self.children=self.children+[e]
 		pass
 	#set the attributes of the current tag
-	def setAttribute(self, key,val):
+	def set_attribute(self, key,val):
 		self.attr[key]=val
 	#set the id of the current tag
-	def setId(self,id):
+	def set_id(self,id):
 		self.attr["id"]=id
 	#print out the tree as string - output the tree to html
-	def toString(self,level=0):
+	def to_string(self,level=0):
 		if not self.tag:
-			return self.indent*level+self.text+"\n"
+			return Element.indent*level+self.text+"\n"
 		else:
-			lst=[self.indent*level]
+			lst=[Element.indent*level]
 
 			lst.append("<"+self.tag)
 
@@ -45,9 +45,9 @@ class Element:
 			lst.append(">\n")
 
 			for chd in self.children:
-				lst.append(chd.toString(level+1))
+				lst.append(chd.to_string(level+1))
 
-			lst.append(self.indent*level)
+			lst.append(Element.indent*level)
 			lst.append("</"+self.tag+">\n")
 		return "".join(lst)
 	
@@ -58,12 +58,12 @@ if __name__=="__main__":
 	c = Element("div")
 	c2 = Element("p")
 
-	c2.setText("Hay!!")
-	c.addChild(c2)
+	c2.set_text("Hay!!")
+	c.add_child(c2)
 	#print(c2.children)
 
 	tree=Element("html",attr={"href":"http://google.com",},children=[c])
 
-	print(tree.toString())
+	print(tree.to_string())
 
 
