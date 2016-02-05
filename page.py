@@ -5,6 +5,9 @@ class Page:
 	title=None
 	head=None
 	body=None
+	id_css={}
+	class_css={}
+	tag_css={}
 	#static variables
 	default_title="untitile"
 	def __init__(self, title = default_title):
@@ -29,13 +32,35 @@ class Page:
 
 
 
-	def add_div(self, id, parent=None):
+	def add_element(self,id, parent=None):
 		pass
-	def delete_div(self, id):
+	def delete_element(self, id):
 		pass
 	def set_attr(self, id, akey, aval):
 		pass
 
+
+#{"id1":{"background-color":"blue","font-size":"13"}}
+
+#{"class1":{"background-color":"blue","font-size":"13"}}
+
+#{"h1":{"background-color":"blue","font-size":"13"}}
+
+
+
+
+
+"""
+#id1{
+	background-color:blue;
+}
+h{}
+.class1
+{
+	
+}
+<a href='' class="class1 " id="_id1" ></a>
+"""
 
 #class["class_name"]=[ele1,ele2]
 #id["id_name"]=ele1
