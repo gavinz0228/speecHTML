@@ -9,15 +9,15 @@ class Page:
 	default_title="untitile"
 	def __init__(self,title=default_title):
 
-		self.root=Element(tag="html")
+		self.root = Element(tag="html")
 
 
-		self.head=Element(tag="head",parent=self.root)
+		self.head = Element(tag="head",parent=self.root)
 
-		self.title=Element("title",parent=self.head)
+		self.title = Element("title",parent=self.head)
 		self.title.add_text(title)
 
-		self.body=Element(tag="body",parent=self.root)
+		self.body = Element(tag="body",parent=self.root)
 
 		self.head.add_child(self.title)
 		self.root.add_child(self.head)
