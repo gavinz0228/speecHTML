@@ -4,13 +4,15 @@ class Element:
 	attr={}
 	text=""
 	children=[]
+	id=None
 	css={}
 	indent='    '
-	def __init__(self,tag="",attr={},children=[],text=""):
+	parent=None
+	def __init__(self,tag="",attr={},children=[],text="",parent=None):
 		self.tag=tag
 		self.attr=attr
 		self.children=children
-
+		self.parent=parent
 		if (tag or children) and text:
 		 	raise Exception("Setting text and tag name in the constructor at the same time is not allow")
 		self.text=text
@@ -20,16 +22,27 @@ class Element:
 		self.children=self.children+[ele]
 
 	#add text to the current tag - create a text element , and add it to the children list of the current object
-	def set_text(self, text):
+	def add_text(self, text):
 	 	e = Element(text=text)
 	 	self.children=self.children+[e]
-		pass
+
+	def set_text(self,text):
+		e = Element(text=text)
+	 	self.children=[e]+[x for x in self.children if x.tag]
 	#set the attributes of the current tag
 	def set_attribute(self, key,val):
 		self.attr[key]=val
 	#set the id of the current tag
 	def set_id(self,id):
-		self.attr["id"]=id
+		self.id=id
+	def get_id(self,id):
+		return self.id
+	def get_classes(self,id):
+		pass
+	def add_class(self,id):
+		pass
+	def del_class(self,id):
+		pass
 	#print out the tree as string - output the tree to html
 	def to_string(self,level=0):
 		if not self.tag:
