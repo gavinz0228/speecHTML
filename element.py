@@ -28,7 +28,7 @@ class Element:
 
     def set_text(self,text):
         e = Element(text = text)
-         self.children=[e] + [x for x in self.children if x.tag]
+        self.children = [e] + [x for x in self.children if x.tag]
     #set the attributes of the current tag
     def set_attribute(self, key,  val):
         self.attr[key] = val
